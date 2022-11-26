@@ -19,6 +19,7 @@ namespace PRutCun.Context
         }
         public DbSet<Calle> Calle { get; set; }
         public DbSet<Trasporte> Trasporte { get; set; }
+        public DbSet<Mapas>Mapas { get; set; }
         public DbSet<CalleTransitada> CalleTransitada { get; set; }
         public DbSet<PuntoInteres> PuntoInteres { get; set; }
         public DbSet<PuntoTransitado> PuntoTransitado { get; set; }

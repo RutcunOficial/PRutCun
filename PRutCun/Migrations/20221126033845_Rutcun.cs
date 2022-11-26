@@ -2,7 +2,7 @@
 
 namespace PRutCun.Migrations
 {
-    public partial class rutcun : Migration
+    public partial class Rutcun : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -128,6 +128,27 @@ namespace PRutCun.Migrations
                         principalColumn: "PkTrasporte",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Mapas",
+                columns: table => new
+                {
+                    PkMapas = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MapaUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FkTrasporte = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mapas", x => x.PkMapas);
+                    table.ForeignKey(
+                        name: "FK_Mapas_Trasporte_FkTrasporte",
+                        column: x => x.FkTrasporte,
+                        principalTable: "Trasporte",
+                        principalColumn: "PkTrasporte",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateTable(
                 name: "PuntoTransitado",
                 columns: table => new
@@ -158,6 +179,11 @@ namespace PRutCun.Migrations
                 column: "FkTrasporte");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Mapas_FkTrasporte",
+                table: "Mapas",
+                column: "FkTrasporte");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PuntoTransitado_FkTrasporte",
                 table: "PuntoTransitado",
                 column: "FkTrasporte");
@@ -177,6 +203,9 @@ namespace PRutCun.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CalleTransitada");
+
+            migrationBuilder.DropTable(
+                name: "Mapas");
 
             migrationBuilder.DropTable(
                 name: "PuntoTransitado");

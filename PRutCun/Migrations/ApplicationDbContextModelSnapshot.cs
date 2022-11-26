@@ -49,6 +49,26 @@ namespace PRutCun.Migrations
                     b.ToTable("CalleTransitada");
                 });
 
+            modelBuilder.Entity("PRutCun.Models.Mapas", b =>
+                {
+                    b.Property<int>("PkMapas")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("FkTrasporte")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MapaUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PkMapas");
+
+                    b.HasIndex("FkTrasporte");
+
+                    b.ToTable("Mapas");
+                });
+
             modelBuilder.Entity("PRutCun.Models.PuntoInteres", b =>
                 {
                     b.Property<int>("PkPunto")
@@ -185,6 +205,15 @@ namespace PRutCun.Migrations
                         .IsRequired();
 
                     b.Navigation("Calle");
+
+                    b.Navigation("Trasporte");
+                });
+
+            modelBuilder.Entity("PRutCun.Models.Mapas", b =>
+                {
+                    b.HasOne("PRutCun.Models.Trasporte", "Trasporte")
+                        .WithMany()
+                        .HasForeignKey("FkTrasporte");
 
                     b.Navigation("Trasporte");
                 });
