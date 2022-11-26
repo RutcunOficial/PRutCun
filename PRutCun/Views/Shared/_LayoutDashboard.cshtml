@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PRutCun</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="stylesheet" href="~/css/style.css" />
+    <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   <header>
+    <div class="contenedor__nav">
+        <nav>
+            <img src="~/imagenes/pngegg.jpeg" class="logo">
+            <a class="apartados" href="#">
+                <i class="fa-sharp fa-solid fa-bus-simple"></i> INICIO
+            </a>
+            <a class="apartados" href="login.html">
+                <i class="fa-sharp fa-solid fa-users"></i> Contactanos
+            </a>
+            <a class="apartados" href="ayuda.html">
+                <i class="fa-sharp fa-solid fa-lightbulb"></i> Ayuda</a>
+        </nav>
+    </div>
+</header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="footer">
+            <div class="contain">
+                <div class="col">
+                    <h1>Institucion</h1>
+                    <ul>
+                        <li><a target="_blank" href="https://upqroo.edu.mx/">UPQROO</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h1>Creditos</h1>
+                    <ul>
+                        <li>Carrera Rivas Crystyan Adamir</li>
+                        <li>Martin Martines Arias</li>
+                        <li>Axel Francisco Braga Dzul </li>
+                        <li>Bryan Antonio Rodríguez López</li>
+                        <li>Alejandro Yahir Chi Chi </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h1>Agradecimientos</h1>
+                    <ul>
+                        <li>Maria Jose Sosa</li>
+                        <li>Moisés Ortega zetina </li>
+                        <li>Manuel Alejandro Flores Barrera</li>
+                        <li>Alejandra Escalera </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h1>Ayuda</h1>
+                    <ul>
+                        <li>
+                            <atarget ="_blank" href="ayuda.html"> Pagina de guia
+                        </li>
+                        <li>rutcunoficial@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col social">
+                    <h1>Redes sociales</h1>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://es-la.facebook.com/upqroo/">
+                                <img src="https://www.facebook.com/images/fb_icon_325x325.png" width="32"
+                                     style="width: 32px;"></img>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank"
+                               href="https://twitter.com/UPQROO?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1200px-Twitter-logo.svg.png"
+                                     width="32" style="width: 32px;"></img>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.instagram.com/up_qroo/">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
+                                     width="32" style="width: 32px;"></img>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
