@@ -12,6 +12,7 @@ namespace PRutCun.Models
         public string Password { get; set; }
 
         [ForeignKey("FkRol")]
-        public Rol Rol { get; set; }
+        public int? FkRol { get; set; }
+        public Roles Rol { get; set; }
     }
 }

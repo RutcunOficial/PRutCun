@@ -1,0 +1,47 @@
+﻿@model PRutCun.Models.Usuario
+@{
+    ViewData["Title"] = "crear usuarios";
+    Layout = "_LayoutDashboard";
+}
+@*<h1>@ViewData["Title"]</h1>*@
+
+
+<div class="container-fluid">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Nuevo articulo</strong></h1>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Crear" method="post">
+                    <div class="form-group">
+                        <label asp-for="Nombre">Nombre</label>
+                        <input asp-for="Nombre" class="form-control" placeholder="ingresar nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nickname">Nickname</label>
+                        <input asp-for="Nickname" class="form-control" placeholder="ingresar descripcion" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password">Password</label>
+                        <input asp-for="Password" class="form-control" placeholder="ingresar el link" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FkRol">Rol</label>
+                        <input  asp-for="FkRol" class="form-control" placeholder="ingresar el link" required>
+                        @*<input asp-for="Rol" />*@
+                    </div>
+                    <div class="container-fluid">
+                        <button type="submit" class="btn btn-success"><i class="fa-solid fa-feather"></i> Crear</button>
+                    </div>
+                </form>
+                <br />
+                <div class="container-fluid">
+                    <a class="btn btn-outline-success" asp-controller="Usuario" asp-action="Index"> Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PRutCun.Models.Usuario>
+@{
+    ViewData["Title"] = "Usuarios";
+    Layout = "_LayoutDashboard";
+}
+<div>
+    <div class="row">
+        <div class="offset-9 col-3 mb-3">
+            <a asp-action="VistaCrear" asp-controller="Usuario" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo usuario </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="offset-12">
+            <div class="card border">
+                <div class="card-header bg-dark">
+                    <h1 class="text-white"><strong>Lista de articulos</strong></h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table table-bordered" id="tblUsuarios" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(x=>x.Nombre)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(x=>x.Nickname)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(x=>x.Password)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(x=>x.Rol)
+                                        </th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var iteam in Model)
+                                    {
+
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Nombre)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Nickname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Password)>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Rol)>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-warning" asp-action="editar" asp-route-id="@iteam.PkUser "><i class="fa-solid fa-pen-nib"></i>Editar </a>
+                                                <a class="btn btn-danger" asp-action="borrar" asp-route-id="@iteam.PkUser"><i class="fa-solid fa-poo"></i>Eliminar </a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No hay registro</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

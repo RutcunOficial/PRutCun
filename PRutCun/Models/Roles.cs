@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PRutCun.Models
 {
-    public class Rol
+    public class Roles
     {
             [Key]
             public int PkRol { get; set; }

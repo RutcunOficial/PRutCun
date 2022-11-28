@@ -34,7 +34,7 @@ namespace PRutCun.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rol",
+                name: "Roles",
                 columns: table => new
                 {
                     PkRol = table.Column<int>(type: "int", nullable: false)
@@ -43,7 +43,7 @@ namespace PRutCun.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rol", x => x.PkRol);
+                    table.PrimaryKey("PK_Roles", x => x.PkRol);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,15 +68,15 @@ namespace PRutCun.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nickname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FkRol = table.Column<int>(type: "int", nullable: true)
+                    RolPkRol = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.PkUser);
                     table.ForeignKey(
-                        name: "FK_Usuario_Rol_FkRol",
-                        column: x => x.FkRol,
-                        principalTable: "Rol",
+                        name: "FK_Usuario_Roles_RolPkRol",
+                        column: x => x.RolPkRol,
+                        principalTable: "Roles",
                         principalColumn: "PkRol",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -136,14 +136,14 @@ namespace PRutCun.Migrations
                     PkMapas = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MapaUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FkTrasporte = table.Column<int>(type: "int", nullable: true)
+                    Fktrasportes = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Mapas", x => x.PkMapas);
                     table.ForeignKey(
-                        name: "FK_Mapas_Trasporte_FkTrasporte",
-                        column: x => x.FkTrasporte,
+                        name: "FK_Mapas_Trasporte_Fktrasportes",
+                        column: x => x.Fktrasportes,
                         principalTable: "Trasporte",
                         principalColumn: "PkTrasporte",
                         onDelete: ReferentialAction.Restrict);
@@ -179,9 +179,9 @@ namespace PRutCun.Migrations
                 column: "FkTrasporte");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mapas_FkTrasporte",
+                name: "IX_Mapas_Fktrasportes",
                 table: "Mapas",
-                column: "FkTrasporte");
+                column: "Fktrasportes");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PuntoTransitado_FkTrasporte",
@@ -194,9 +194,9 @@ namespace PRutCun.Migrations
                 column: "FkTipo");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_FkRol",
+                name: "IX_Usuario_RolPkRol",
                 table: "Usuario",
-                column: "FkRol");
+                column: "RolPkRol");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -223,7 +223,7 @@ namespace PRutCun.Migrations
                 name: "Trasporte");
 
             migrationBuilder.DropTable(
-                name: "Rol");
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "TipoTrasporte");

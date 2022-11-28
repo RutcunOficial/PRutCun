@@ -10,7 +10,7 @@ using PRutCun.Context;
 namespace PRutCun.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221126033845_Rutcun")]
+    [Migration("20221128231038_Rutcun")]
     partial class Rutcun
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace PRutCun.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FkTrasporte")
+                    b.Property<int?>("Fktrasportes")
                         .HasColumnType("int");
 
                     b.Property<string>("MapaUrl")
@@ -66,7 +66,7 @@ namespace PRutCun.Migrations
 
                     b.HasKey("PkMapas");
 
-                    b.HasIndex("FkTrasporte");
+                    b.HasIndex("Fktrasportes");
 
                     b.ToTable("Mapas");
                 });
@@ -104,7 +104,7 @@ namespace PRutCun.Migrations
                     b.ToTable("PuntoTransitado");
                 });
 
-            modelBuilder.Entity("PRutCun.Models.Rol", b =>
+            modelBuilder.Entity("PRutCun.Models.Roles", b =>
                 {
                     b.Property<int>("PkRol")
                         .ValueGeneratedOnAdd()
@@ -116,7 +116,7 @@ namespace PRutCun.Migrations
 
                     b.HasKey("PkRol");
 
-                    b.ToTable("Rol");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("PRutCun.Models.TipoTrasporte", b =>
@@ -185,9 +185,12 @@ namespace PRutCun.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RolPkRol")
+                        .HasColumnType("int");
+
                     b.HasKey("PkUser");
 
-                    b.HasIndex("FkRol");
+                    b.HasIndex("RolPkRol");
 
                     b.ToTable("Usuario");
                 });
@@ -215,7 +218,7 @@ namespace PRutCun.Migrations
                 {
                     b.HasOne("PRutCun.Models.Trasporte", "Trasporte")
                         .WithMany()
-                        .HasForeignKey("FkTrasporte");
+                        .HasForeignKey("Fktrasportes");
 
                     b.Navigation("Trasporte");
                 });
@@ -250,9 +253,9 @@ namespace PRutCun.Migrations
 
             modelBuilder.Entity("PRutCun.Models.Usuario", b =>
                 {
-                    b.HasOne("PRutCun.Models.Rol", "Rol")
+                    b.HasOne("PRutCun.Models.Roles", "Rol")
                         .WithMany()
-                        .HasForeignKey("FkRol");
+                        .HasForeignKey("RolPkRol");
 
                     b.Navigation("Rol");
                 });

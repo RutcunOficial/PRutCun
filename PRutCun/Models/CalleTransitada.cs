@@ -11,9 +11,11 @@ namespace PRutCun.Models
         public int FkTrasporte { get; set; }
 
         [ForeignKey("FkCalle")]
+
         public Calle Calle { get; set; }
 
         [ForeignKey("FkTrasporte")]
+
         public Trasporte Trasporte { get; set; }
     }
 }
