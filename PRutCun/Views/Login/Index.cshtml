@@ -1,31 +1,68 @@
-﻿@{
+﻿@model IEnumerable<PRutCun.Models.Usuario>
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+
 }
 
-<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
     <title>Login Form Design One | Fazt</title>
     <link rel="stylesheet" href="~/css/master.css">
 </head>
-<body>
 
     <div class="login-box">
         <img src="~/imagenes/logo.jpeg" class="avatar" alt="Avatar Image">
         <h1>Login</h1>
-        <form>
+
             <!-- USERNAME INPUT -->
             <label for="username">Usuario</label>
-            <input type="text" placeholder="Ingrese su usuario">
+             <input type="text" placeholder="Ingrese su usuario" id="user">
             <!-- PASSWORD INPUT -->
             <label for="password">Password</label>
-            <input type="password" placeholder="Password">
-            <input type="submit" value="login">
+            <input type="password" placeholder="Password" id="password">
+            <input type="submit" id="btnLogin" value="login">
             <a href="#">Lost your Password?</a><br>
             <a href="#">Don't have An account?</a>
 
-        </form>
+
     </div>
-</body>
 </html>
+    <script>
+        
+        $(document).ready(function(){
+
+            $("#btnLogin").click(function () {
+                var user = $("#user").val();
+                var password = $("#password").val();
+                $.ajax({
+                    url: "/Login/LoginUser",
+                    type: "POST",
+                    data: {
+                        "user" : user,
+                    "password" : password
+                    },
+                    dataType: "json",
+                    success: function(response){
+                        console.log(response)
+                        debugger
+                        if(response.success == true){
+                            if(response.admin == true){
+                            window.location.href = "/Home/Index";
+                            }
+                        }else{
+                            $("#parrafo1").html("<div class='alert alert-danger'><strong>Usuario o contraseña incorrecta<\strong> intentalo de nuevo<\div>")
+                        }
+                    },
+                    error: function(){
+                        console.log('Login Fail!!!!!')
+                    }
+                });
+
+
+
+            });
+        });
+    </script>
