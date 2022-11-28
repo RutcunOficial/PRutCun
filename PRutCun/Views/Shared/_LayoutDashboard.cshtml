@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     @*<link rel="stylesheet" href="~/css/site.css" />*@
     <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/Inicio.css"/>
     <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
     <div class="contenedor__nav">
         <nav>
             <img src="~/imagenes/pngegg.jpeg" class="logo">
-            <a class="apartados" href="#">
+            <a class="apartados" asp-controller="Inicio" asp-action="Index">
                 <i class="fa-sharp fa-solid fa-bus-simple"></i> INICIO
             </a>
             <a class="apartados" href="login.html">
