@@ -97,8 +97,8 @@ nav a {
     width: 100%;
     position: relative;
     height: auto;
-    background-color: #1E4B57;
-    border-radius: 2%;
+    background-color: #000;
+   
 }
 
     .footer .col {
@@ -118,7 +118,7 @@ nav a {
             font-size: 12px;
             line-height: 17px;
             padding: 20px 0px 5px 0px;
-            color: rgb(0, 0, 0);
+            color: white;
             font-weight: normal;
             text-transform: uppercase;
             letter-spacing: 0.250em;

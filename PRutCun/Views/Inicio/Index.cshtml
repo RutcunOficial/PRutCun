@@ -1,30 +1,57 @@
 ﻿@{
     ViewData["Title"] = "Inicio Page";
-    Layout = "_LayoutDashboard";
+    Layout = "_Layout";
 }
 
-<div class="contenedor">
+<div id="parallax-world-of-ugg">
+
+    <section>
+        <div class="title">
+            <h3></h3>
+            <a asp-controller="Home" asp-action="Index"><img class="Img" src="~/imagenes/logo.jpeg"></a>
+            
+        </div>
+    </section>
+
+    <section>
+        <div class="parallax-one">
+            <h2>¿Quienes Somos?</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p><span class="first-character sc">s</span>omos un equipo de estudiantes acargo de un proyecto con el unico objetivo de ayudar al publico en general</p>
+            <br>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="parallax-two">
+            <h2>MISION</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p><span class="first-character ny">N</span>uestra mision es ser un medio en la cual se puedan conocer las rutas que tienen cada uno de los transportes publicos en la ciudad, para que se de deje de ver un desconocimiento general y turistico por donde pasa el transporte publico</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="parallax-three">
+            <h2>VISION</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p><span class="first-character atw">B</span>rindar informacion veridica de todos los transportes publicos de la ciudad, teniendo la informacion mas actual y disponible al alcance de todos lo que la necesiten y cuenten con un dispositivo con conectividad a internet</p>
+            <br>
+            <br>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-1">IR A MAPA</a>
+        </div>
+    </section>
+
 </div>
-
-<br></br>
-<br></br>
-<br></br>
-<section class="">
-    <img class="Title" src="~/imagenes/logo.jpeg"></img>
-</section>
-
-<div class="ContenedorTex">
-    <div class="textoMision">
-        <h1 class="Texto1"><strong>MISION</strong> </h1>
-        <p class="Texto2">Nuestra mision es ser un medio en la cual se puedan conocer las rutas que tienen cada uno de los transportes publicos en la ciudad, para que se de deje de ver un desconocimiento general y turistico por donde pasa el transporte publico </p>
-    </div>
-
-    <div class="textoVision">
-        <h1 class="Texto1"><strong>VISION</strong></h1>
-        <p class="Texto2">Brindar informacion veridica de todos los transportes publicos de la ciudad, teniendo la informacion mas actual y disponible al alcance de todos lo que la necesiten y cuenten con un dispositivo con conectividad a internet</p>
-    </div>
-    <br>
-    <br>
-    <br>
-</div>
-<a class="btn btn-1" asp-controller="Home" asp-action="Index">IR A MAPA</a>
