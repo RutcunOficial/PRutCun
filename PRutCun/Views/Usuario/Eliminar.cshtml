@@ -1,0 +1,30 @@
+﻿@model PRutCun.Models.Usuario
+@{
+    ViewData["Title"] = "borrar usuario";
+    Layout = "_LayoutDashboard";
+}
+@*@<h1>@ViewData["Title"]</h1>@*@
+
+
+<div class="container-fluid">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Borrar</strong></h1>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Borrar" method="post">
+@*                    @id del usuario oculto@
+*@                    <input type="hidden" asp-for="PkUser" />
+                    <h1><strong>Desea Borrar el usuario?</strong></h1>
+                    <div class="container-fluid">
+                        <a class="btn btn-danger" asp-controller="Usuario" asp-action="Index">NO</a>
+                        <button type="submit" class="btn btn-success">SI</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

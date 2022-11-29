@@ -24,7 +24,7 @@ namespace PRutCun.Controllers
             _logger = logger;
             _context = context;
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-UDRF3CJ; Initial Catalog=Rutcun; Integrated Security=True;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-SCRUN91; Initial Catalog=Rutcun; Integrated Security=True;");
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -43,7 +43,7 @@ namespace PRutCun.Controllers
             try
             {
                 int RolPkRol = Convert.ToInt32(i.FkRol);
-                var response = await connection.QueryAsync<Usuario>("SpInsertUsuarios", new { i.Nombre, i.Nickname, i.Password, i.FkRol, RolPkRol  }, commandType: CommandType.StoredProcedure); ;
+                var response = await connection.QueryAsync<Usuario>("SpInsertUsuarios", new { i.Nombre, i.Nickname, i.Password, i.FkRol, RolPkRol }, commandType: CommandType.StoredProcedure); ;
                 return RedirectToAction(nameof(Index));
 
             }
@@ -52,5 +52,53 @@ namespace PRutCun.Controllers
                 throw new Exception("surgio un error " + ex.Message);
             }
         }
+		[HttpGet]
+		public IActionResult EditarUsuario(int? id)
+		{
+			if (id == null)
+			{ return NotFound(); }
+			var usuario = _context.Usuario.Find(id);
+			if (usuario == null)
+			{ return NotFound(); }
+
+			return View(usuario);
+		}
+		[HttpPost]
+		public async Task<ActionResult> UsuarioEditar(Usuario request)
+		{
+
+			Usuario usuario = new Usuario();
+			usuario = _context.Usuario.Find(request.PkUser);
+			if (usuario != null)
+			{
+				int RolPkRol = Convert.ToInt16(request.FkRol);
+				await connection.QueryAsync<Usuario>("SpUpdateUsuario", new { request.PkUser, request.Nombre, request.Nickname,request.Password, request.FkRol,RolPkRol }, commandType: CommandType.StoredProcedure);
+
+				return RedirectToAction(nameof(Index));
+			}
+			return NotFound();
+		}
+        [HttpGet]
+        public IActionResult Eliminar(int id)
+        {
+            Usuario usuario = new Usuario();
+            usuario.PkUser = id;
+            return View(usuario);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Borrar(Usuario i)
+        {
+            try
+            {
+                var response = await connection.QueryAsync<Usuario>("spDeleteUsuarios", new { i.PkUser }, commandType: CommandType.StoredProcedure); ;
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("surgio un error " + ex.Message);
+            }
+        }
+
     }
 }
