@@ -1,55 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model PRutCun.Models.Mapas
+@{
+    ViewData["Title"] = "Rutcun";
     Layout = "_LayoutDashboard";
 }
 
-
-
 <div class="contenedor">
-    
+
 
     <br></br>
     <br></br>
     <br></br>
 
     <p class="TextMap"> Mapa con Ruta</p>
-    <iframe class="mapa" src="https://www.google.com/maps/d/embed?mid=1l1KJdva0mp-WxrvJHqon25yS9f0G89A&ehbc=2E312F"
-            width="640" height="480"></iframe>
-
+    <iframe class="mapa" src="@Html.DisplayFor(x=>x.MapaUrl)" width="640" height="480"></iframe>
 
     <div>
         <div class="contenerdor__combos">
             <p class="TextSel"> Rutas</p>
-            <p class="TextePun">Punto de interes</p>
+            <form asp-action="Mapa" method="post">
+                <select class="Combo1" asp-for="Fktrasportes" asp-items="ViewBag.Transporte">
+
+                    <option value=""></option>
+                </select>
+                <button id="btnEnviar" type="submit" asp-action="Texto" asp-controller="Home">zzz</button>
+            </form>
+
         </div>
-        <select class="Combo1">
-            <option class="Combo1">Ruta 11</option>
-            <option class="Combo2">Ruta 2</option>
-            <option class="Combo3">Ruta 14</option>
-            <option class="Combo4">Ruta 15</option>
-            <option class="Combo5">Ruta 22</option>
-            <option class="Combo6">Ruta 44</option>
-        </select>
 
-
-        <select class="Combo2">
-            <option class="Combo1">CHEDRAUI</option>
-            <option class="Combo2">Aurrera</option>
-            <option class="Combo3">IMSS</option>
-            <option class="Combo4">Las americas</option>
-            <option class="Combo5">Playa</option>
-            <option class="Combo6">UPQROO</option>
-        </select>
     </div>
 
     <div class="textoInfo">
-        <p>Ruta 11</p>
-        <p>Avenida:</p>
-        <p>- Av Kabah</p>
-        <p>Horarios</p>
+        <p>@Html.DisplayFor(x => x.Trasporte.Nombre)</p>
+        <p>@Html.DisplayFor(x => x.Trasporte.HoraInicial)</p>
+        <p>@Html.DisplayFor(x => x.Trasporte.HoraFinal)</p>
+        <p>@Html.DisplayFor(x => x.Trasporte.Dia)</p>
+        <p>@Html.DisplayFor(x => x.Trasporte.Estatus)</p>
     </div>
     <br></br>
     <br></br>
     <br></br>
-    
+
 </div>
