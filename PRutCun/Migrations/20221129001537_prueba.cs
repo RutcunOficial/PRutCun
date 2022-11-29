@@ -2,7 +2,7 @@
 
 namespace PRutCun.Migrations
 {
-    public partial class Rutcun : Migration
+    public partial class prueba : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,6 +68,7 @@ namespace PRutCun.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nickname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FkRol = table.Column<int>(type: "int", nullable: true),
                     RolPkRol = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

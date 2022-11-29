@@ -10,8 +10,8 @@ using PRutCun.Context;
 namespace PRutCun.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221128231038_Rutcun")]
-    partial class Rutcun
+    [Migration("20221129001537_prueba")]
+    partial class prueba
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

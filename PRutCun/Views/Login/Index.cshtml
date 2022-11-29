@@ -6,7 +6,7 @@
 }
 
 
-<html>
+
 <head>
     <meta charset="utf-8">
     <title>Login Form Design One | Fazt</title>
@@ -29,14 +29,13 @@
 
 
     </div>
-</html>
     <script>
-        
         $(document).ready(function(){
-
             $("#btnLogin").click(function () {
                 var user = $("#user").val();
                 var password = $("#password").val();
+                //alert("This is alert!!!!! " + user);
+                //console.log(password)
                 $.ajax({
                     url: "/Login/LoginUser",
                     type: "POST",
@@ -49,20 +48,18 @@
                         console.log(response)
                         debugger
                         if(response.success == true){
-                            if(response.admin == true){
-                            window.location.href = "/Home/Index";
-                            }
+                            window.location.href = "/Usuario/Index";
                         }else{
-                            $("#parrafo1").html("<div class='alert alert-danger'><strong>Usuario o contraseña incorrecta<\strong> intentalo de nuevo<\div>")
+                            window.location.href = "@Url.Action("Index", "Login")";
                         }
                     },
                     error: function(){
                         console.log('Login Fail!!!!!')
                     }
                 });
+                
 
-
-
+               
             });
         });
     </script>
