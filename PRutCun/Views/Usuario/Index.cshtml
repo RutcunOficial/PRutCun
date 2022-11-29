@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PRutCun.Models.Usuario>
 @{
     ViewData["Title"] = "Usuarios";
-    Layout = "_LayoutDashboard";
+    Layout = "_LayoutCrud";
 }
 <div>
     <div class="row">
@@ -50,10 +50,10 @@
                                                 @Html.DisplayFor(x=>iteam.Nickname)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(x=>iteam.Password)>
+                                                @Html.DisplayFor(x=>iteam.Password)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(x=>iteam.Rol)>
+                                                @Html.DisplayFor(x=>iteam.FkRol)
                                             </td>
                                             <td>
                                                 <a class="btn btn-warning" asp-action="EditarUsuario" asp-route-id="@iteam.PkUser "><i class="fa-solid fa-pen-nib"></i>Editar </a>

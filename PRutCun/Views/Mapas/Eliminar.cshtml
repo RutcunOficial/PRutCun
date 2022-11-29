@@ -1,7 +1,7 @@
 ﻿@model PRutCun.Models.Mapas
 @{
     ViewData["Title"] = "borrar mapas";
-    Layout = "_LayoutDashboard";
+    Layout = "_LayoutCrud";
 }
 @*@<h1>@ViewData["Title"]</h1>@*@
 
@@ -18,7 +18,7 @@
                 <form asp-action="Borrar" method="post">
                     @*                    @id del usuario oculto@
 *@                    <input type="hidden" asp-for="PkMapas" />
-                    <h1><strong>Desea Borrar el usuario?</strong></h1>
+                    <h1><strong>Desea Borrar el mapa?</strong></h1>
                     <div class="container-fluid">
                         <a class="btn btn-danger" asp-controller="Mapas" asp-action="Index">NO</a>
                         <button type="submit" class="btn btn-success">SI</button>
