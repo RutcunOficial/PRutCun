@@ -29,37 +29,39 @@
 
 
     </div>
-    <script>
-        $(document).ready(function(){
-            $("#btnLogin").click(function () {
-                var user = $("#user").val();
-                var password = $("#password").val();
-                //alert("This is alert!!!!! " + user);
-                //console.log(password)
-                $.ajax({
-                    url: "/Login/LoginUser",
-                    type: "POST",
-                    data: {
-                        "user" : user,
-                    "password" : password
-                    },
-                    dataType: "json",
-                    success: function(response){
-                        console.log(response)
-                        debugger
-                        if(response.success == true){
+<script>
+    $(document).ready(function () {
+        $("#btnLogin").click(function () {
+            var user = $("#user").val();
+            var password = $("#password").val();
+            $.ajax({
+                url: "/Login/LoginUser",
+                type: "POST",
+                data: {
+                    "user": user,
+                    "password": password
+                },
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    debugger
+                    if (response.success == true) {
+                        if (response.admin == true) {
                             window.location.href = "/Usuario/Index";
-                        }else{
-                            window.location.href = "@Url.Action("Index", "Login")";
+                        } else {
+                            window.location.href = "/Home/Index";
                         }
-                    },
-                    error: function(){
-                        console.log('Login Fail!!!!!')
+                    } else {
+                        window.location.href = "@Url.Action("Index", "Login")";
                     }
-                });
-                
-
-               
+                },
+                error: function () {
+                    console.log('Login Fail!!!!!')
+                }
             });
+
+
+
         });
-    </script>
+    });
+</script>

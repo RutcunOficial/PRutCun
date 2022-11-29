@@ -28,14 +28,18 @@ namespace PRutCun.Controllers
         {
             try
             {
-                var response = _context.Usuario.Where(x => x.Nickname == user && x.Password == password).ToList();
-                if (response.Count > 0)
+                var response = _context.Usuario.Include(u => u.Rol).FirstOrDefault(x => x.Nickname == user && x.Password == password);
+                if (response != null)
                 {
-                    return Json(new { Success = true });
+                    if (response.Rol.Nombre == "Admin")
+                    {
+                        return Json(new { Success = true, Admin = true });
+                    }
+                    return Json(new { Success = true, Admin = false });
                 }
                 else
                 {
-                    return Json(new { Success = false });
+                    return Json(new { Success = false, Admin = false });
                 }
             }
             catch (Exception ex)

@@ -1,12 +1,12 @@
-﻿@model IEnumerable<PRutCun.Models.Usuario>
+﻿@model IEnumerable<PRutCun.Models.Mapas>
 @{
-    ViewData["Title"] = "Usuarios";
+    ViewData["Title"] = "Mapas";
     Layout = "_LayoutDashboard";
 }
 <div>
     <div class="row">
         <div class="offset-9 col-3 mb-3">
-            <a asp-action="VistaCrear" asp-controller="Usuario" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo usuario </a>
+            <a asp-action="VistaCrear" asp-controller="Mapas" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo mapa </a>
         </div>
     </div>
 
@@ -14,7 +14,7 @@
         <div class="offset-12">
             <div class="card border">
                 <div class="card-header bg-dark">
-                    <h1 class="text-white"><strong>Lista de usuario</strong></h1>
+                    <h1 class="text-white"><strong>Lista de Mapas</strong></h1>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -24,16 +24,10 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            @Html.DisplayNameFor(x=>x.Nombre)
+                                            @Html.DisplayNameFor(x=>x.MapaUrl)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(x=>x.Nickname)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(x=>x.Password)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(x=>x.Rol)
+                                            @Html.DisplayNameFor(x=>x.Fktrasportes)
                                         </th>
                                         <th>Acciones</th>
                                     </tr>
@@ -44,20 +38,14 @@
 
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(x=>iteam.Nombre)
+                                                <iframe src="@Html.DisplayFor(x=>iteam.MapaUrl)"></iframe>
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(x=>iteam.Nickname)
+                                                @Html.DisplayFor(x=>iteam.Fktrasportes)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(x=>iteam.Password)>
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(x=>iteam.Rol)>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-warning" asp-action="EditarUsuario" asp-route-id="@iteam.PkUser "><i class="fa-solid fa-pen-nib"></i>Editar </a>
-                                                <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@iteam.PkUser"><i class="fa-solid fa-poo"></i>Eliminar </a>
+                                                <a class="btn btn-warning" asp-action="EditarMapas" asp-route-id="@iteam.PkMapas "><i class="fa-solid fa-pen-nib"></i>Editar </a>
+                                                <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@iteam.PkMapas"><i class="fa-solid fa-poo"></i>Eliminar </a>
 
                                             </td>
                                         </tr>

@@ -1,0 +1,58 @@
+﻿@model PRutCun.Models.Trasporte
+@{
+    ViewData["Title"] = "Trasporte";
+    Layout = "_LayoutDashboard";
+}
+
+<div class="container-fluid">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Editar</strong></h1>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="TrasporteEditar" method="post">
+                    @*                    Id Del usuario oculto*@
+                    <input type="hidden" asp-for="PkTrasporte" />
+                    <div class="form-group">
+                        <label asp-for="Nombre">Ruta</label>
+                        <input asp-for="Nombre" class="form-control" placeholder="ingresar nombre de la ruta" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HoraInicial">HoraInicial</label>
+                        <input asp-for="HoraInicial" class="form-control" placeholder="ingresar la hora inicial" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HoraFinal">HoraFinal</label>
+                        <input asp-for="HoraFinal" class="form-control" placeholder="ingresar la Hora Final" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Dia">Dia</label>
+                        <input asp-for="Dia" class="form-control" placeholder="ingresar los dias" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Estatus">Estatus</label>
+                        <input asp-for="Estatus" class="form-control" placeholder="ingresar el estatus">
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FkTipo">Tipo</label>
+                        <input asp-for="FkTipo" class="form-control" placeholder="ingresar el Tipo de trasporte" required>
+
+                    </div>
+
+                    <div class="container-fluid">
+                        <button type="submit" class="btn btn-success"><i class="fa-solid fa-feather"></i> Editar</button>
+                    </div>
+                </form>
+                <br />
+                <div class="container-fluid">
+                    <a class="btn btn-outline-success" asp-controller="Trasporte" asp-action="Index"> Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

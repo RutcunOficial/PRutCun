@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PRutCun.Models.Trasporte>
+@{
+    ViewData["Title"] = "Trasporte";
+    Layout = "_LayoutDashboard";
+}
+<div>
+    <div class="row">
+        <div class="offset-9 col-3 mb-3">
+            <a asp-action="VistaCrear" asp-controller="Trasporte" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo usuario </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="offset-12">
+            <div class="card border">
+                <div class="card-header bg-dark">
+                    <h1 class="text-white"><strong>Lista de trasporte</strong></h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                                <table class="table table-bordered" id="tblUsuarios" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                            @Html.DisplayNameFor(x=>x.Nombre)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(x=>x.HoraInicial)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(x=>x.HoraFinal)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(x=>x.Dia)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(x=>x.Estatus)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(x=>x.FkTipo)
+                                            </th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var iteam in Model)
+                                    {
+                                       <tr>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Nombre)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.HoraInicial)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.HoraFinal)>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Dia)>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Estatus)>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.FkTipo)>
+                                            </td>
+                                            <td>
+                                                    <a class="btn btn-warning" asp-action="EditarTrasporte" asp-route-id="@iteam.PkTrasporte "><i class="fa-solid fa-pen-nib"></i>Editar </a>
+                                                    <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@iteam.PkTrasporte"><i class="fa-solid fa-poo"></i>Eliminar </a>
+                                            </td>
+                                       </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                        }
+                        else
+                        {
+                                <p>No hay registro</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -53,7 +53,7 @@ namespace PRutCun
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Usuario}/{action=Index}/{id?}");
+                    pattern: "{controller=Trasporte}/{action=Index}/{id?}");
             });
         }
     }
