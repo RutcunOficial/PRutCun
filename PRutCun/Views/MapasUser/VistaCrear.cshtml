@@ -1,0 +1,39 @@
+﻿@model PRutCun.Models.Mapas
+@{
+    ViewData["Title"] = "crear mapa";
+    Layout = "_LayoutDashboard";
+}
+@*<h1>@ViewData["Title"]</h1>*@
+
+
+<div class="container-fluid">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Nuevo mapas</strong></h1>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-action="Crear" method="post">
+                    <div class="form-group">
+                        <label asp-for="MapaUrl">MapaUrl</label>
+                        <input asp-for="MapaUrl" class="form-control" placeholder="ingresar mapa" required>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Fktrasportes">Fktrasportes</label>
+                        <input asp-for="Fktrasportes" class="form-control" placeholder="ingresar Fktrasporte" required>
+                    </div>
+                    
+                    <div class="container-fluid">
+                        <button type="submit" class="btn btn-success"><i class="fa-solid fa-feather"></i> Crear</button>
+                    </div>
+                </form>
+                <br />
+                <div class="container-fluid">
+                    <a class="btn btn-outline-success" asp-controller="Mapas" asp-action="Index"> Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

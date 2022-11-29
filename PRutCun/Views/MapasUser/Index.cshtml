@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PRutCun.Models.Mapas>
+@{
+    ViewData["Title"] = "Mapas";
+    Layout = "_LayoutDashboard";
+}
+<div>
+    <div class="row">
+        <div class="offset-9 col-3 mb-3">
+            <a asp-action="VistaCrear" asp-controller="Mapas" class="btn-success d-block mx-auto btn-lg"><i class="fa-solid fa-diamond"></i> Nuevo mapa </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="offset-12">
+            <div class="card border">
+                <div class="card-header bg-dark">
+                    <h1 class="text-white"><strong>Lista de Mapas</strong></h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table table-bordered" id="tblUsuarios" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(x=>x.MapaUrl)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(x=>x.Fktrasportes)
+                                        </th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var iteam in Model)
+                                    {
+
+                                        <tr>
+                                            <td>
+                                                <iframe src="@Html.DisplayFor(x=>iteam.MapaUrl)"></iframe>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(x=>iteam.Fktrasportes)
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-warning" asp-action="EditarMapas" asp-route-id="@iteam.PkMapas "><i class="fa-solid fa-pen-nib"></i>Editar </a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No hay registro</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
