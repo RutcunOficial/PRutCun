@@ -42,8 +42,8 @@ namespace PRutCun.Controllers
         {
             try
             {
-                
-                var response = await connection.QueryAsync<Usuario>("SpInsertUsuarios", new { i.Nombre, i.Nickname, i.Password,i.FkRol  }, commandType: CommandType.StoredProcedure); ;
+                int RolPkRol = Convert.ToInt32(i.FkRol);
+                var response = await connection.QueryAsync<Usuario>("SpInsertUsuarios", new { i.Nombre, i.Nickname, i.Password, i.FkRol, RolPkRol  }, commandType: CommandType.StoredProcedure); ;
                 return RedirectToAction(nameof(Index));
 
             }
