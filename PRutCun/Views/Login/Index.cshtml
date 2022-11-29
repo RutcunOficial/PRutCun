@@ -44,11 +44,12 @@
                 dataType: "json",
                 success: function (response) {
                     console.log(response)
+                    debugger
                     if (response.success == true) {
                         if (response.admin == true) {
                             window.location.href = "/Usuario/Index";
                         } else {
-                            window.location.href = "/Home/Index";
+                            window.location.href = "/MapasUser/Index";
                         }
                     } else {
                         window.location.href = "@Url.Action("Index", "Login")";

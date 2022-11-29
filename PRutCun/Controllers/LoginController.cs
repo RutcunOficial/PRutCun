@@ -31,7 +31,7 @@ namespace PRutCun.Controllers
                 var response = _context.Usuario.Include(u => u.Rol).FirstOrDefault(x => x.Nickname == user && x.Password == password);
                 if (response != null)
                 {
-                    if (response.Rol.Nombre == "Admin")
+                    if (response.Rol.PkRol == 1)
                     {
                         return Json(new { Success = true, Admin = true });
                     }
