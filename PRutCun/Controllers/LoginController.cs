@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Text;
+using System.Security.Cryptography;
 
 namespace PRutCun.Controllers
 {
@@ -27,8 +28,10 @@ namespace PRutCun.Controllers
         public JsonResult LoginUser(string user, string password)
         {
             try
-            {
-                var response = _context.Usuario.Include(u => u.Rol).FirstOrDefault(x => x.Nickname == user && x.Password == password);
+            {   
+                string contraseñaTemp = Encrypt(password);
+                string contraseña = Decrypt(contraseñaTemp);
+                var response = _context.Usuario.Include(u => u.Rol).FirstOrDefault(x => x.Nickname == user && x.Password == contraseñaTemp);
                 if (response != null)
                 { 
                     if (response.Rol.PkRol == 1)
@@ -46,6 +49,40 @@ namespace PRutCun.Controllers
             {
                 throw new Exception("Surgio un error: " + ex.Message);
             }
+        }
+
+        public string Encrypt(String mensaje)
+        {
+            string hash = "Coding C";
+            byte[] data = UTF8Encoding.UTF8.GetBytes(mensaje);
+
+            MD5 md5 = MD5.Create();
+            TripleDES tripledes = TripleDES.Create();
+
+            tripledes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+            tripledes.Mode = CipherMode.ECB;
+
+            ICryptoTransform transform = tripledes.CreateEncryptor();
+            byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
+
+            return Convert.ToBase64String(result);
+        }
+
+        public string Decrypt(string MensajeEn)
+        {
+            string hash = "Coding C";
+            byte[] data = Convert.FromBase64String(MensajeEn);
+
+            MD5 md5 = MD5.Create();
+            TripleDES tripledes = TripleDES.Create();
+
+            tripledes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+            tripledes.Mode = CipherMode.ECB;
+
+            ICryptoTransform transform = tripledes.CreateDecryptor();
+            byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
+
+            return UTF8Encoding.UTF8.GetString(result);
         }
     }
 }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Data.SqlClient;
 using Dapper;
 using System.Data;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace PRutCun.Controllers
 {
@@ -24,7 +26,7 @@ namespace PRutCun.Controllers
             _logger = logger;
             _context = context;
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-SCRUN91; Initial Catalog=Rutcun; Integrated Security=True;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-UDRF3CJ; Initial Catalog=Rutcun; Integrated Security=True;");
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -43,7 +45,8 @@ namespace PRutCun.Controllers
             try
             {
                 int RolPkRol = Convert.ToInt32(i.FkRol);
-                var response = await connection.QueryAsync<Usuario>("SpInsertUsuarios", new { i.Nombre, i.Nickname, i.Password, i.FkRol, RolPkRol }, commandType: CommandType.StoredProcedure); ;
+                string Password = Encrypt(i.Password);
+                var response = await connection.QueryAsync<Usuario>("SpInsertUsuarios", new { i.Nombre, i.Nickname, Password, i.FkRol, RolPkRol }, commandType: CommandType.StoredProcedure); ;
                 return RedirectToAction(nameof(Index));
 
             }
@@ -100,5 +103,21 @@ namespace PRutCun.Controllers
             }
         }
 
+        public string Encrypt(String mensaje)
+        {
+            string hash = "Coding C";
+            byte[] data = UTF8Encoding.UTF8.GetBytes(mensaje);
+
+            MD5 md5 = MD5.Create();
+            TripleDES tripledes = TripleDES.Create();
+
+            tripledes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+            tripledes.Mode = CipherMode.ECB;
+
+            ICryptoTransform transform = tripledes.CreateEncryptor();
+            byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
+
+            return Convert.ToBase64String(result);
+        }
     }
 }
