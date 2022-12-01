@@ -5,24 +5,11 @@
 }
 
 <div class="contenedor">
-
     <div>
         <div class="contenerdor__combos">
-            <p class="TextSel"> Rutas</p>
-            <form asp-action="Mapa" method="post">
-                <select class="Combo1" asp-for="Fktransportes" asp-items="ViewBag.Transporte">
-
-                    <option value=""></option>
-                </select>
-                <button id="btnEnviar" type="submit" asp-action="Index" asp-controller="Home">Volver</button>
-            </form>
-
+            <a asp-action="Index" asp-controller="Home" id="btnVolver" class="btn btn-outline-dark">Volver</a>
         </div>
 
     </div>
-
-    <p class="TextMap"> Mapa con Ruta</p>
     <iframe class="mapa" src="@Html.DisplayFor(x=>x.MapaUrl)" width="640" height="900"></iframe>
-
-
 </div>

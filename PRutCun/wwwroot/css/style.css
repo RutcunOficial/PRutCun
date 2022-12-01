@@ -209,27 +209,31 @@ nav a {
     }
 }
 
+#btnVolver {
+    margin-top: 5%;
+    width: 100%;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
 .mapa {
     z-index: 2022;
     float: none;
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
+    width: 100%;
     margin-top: 2%;
-    height: 600px;
-    border-radius: 10px;
-    border: 3px solid #2E3139;
+    height: 500px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 .Combo1 {
-    margin-left: 20%;
-    margin-top: 73px;
+    margin-left: 47%;
     height: 45px;
-    width: 9%;
-    border-radius: 12px;
-    background-color: #2E3139;
+    width: 10%;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 0%);
     font-weight: bolder;
-    color: whitesmoke;
+    color: white;
     padding: .2%;
 }
 
@@ -250,8 +254,7 @@ nav a {
 
 .TextSel {
     color: black;
-    margin-left: 100px;
-    margin-top: 5%;
+    margin-left: 28%;
     font-weight: bold;
     font-size: x-large;
     position: absolute;
@@ -321,7 +324,7 @@ nav a {
 
     .TextMap {
         color: black;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Nexa;
         font-weight: bold;
         font-size: x-large;
         width: 40%;
@@ -331,9 +334,10 @@ nav a {
 
 .TextMap {
     color: black;
-    margin-left: 42%;
+    margin-left: 40%;
+    margin-top: 3%;
     font-weight: bold;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 logo {
