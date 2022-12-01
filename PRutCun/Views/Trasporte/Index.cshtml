@@ -1,6 +1,6 @@
-﻿@model IEnumerable<PRutCun.Models.Trasporte>
+﻿@model IEnumerable<PRutCun.Models.Transporte>
 @{
-    ViewData["Title"] = "Trasporte";
+    ViewData["Title"] = "Transporte";
     Layout = "_LayoutCrud";
 }
 <div>
@@ -67,8 +67,8 @@
                                                 @Html.DisplayFor(x=>iteam.FkTipo)
                                             </td>
                                             <td>
-                                                    <a class="btn btn-warning" asp-action="EditarTrasporte" asp-route-id="@iteam.PkTrasporte "><i class="fa-solid fa-pen-nib"></i>Editar </a>
-                                                    <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@iteam.PkTrasporte"><i class="fa-solid fa-poo"></i>Eliminar </a>
+                                                    <a class="btn btn-warning" asp-action="EditarTrasporte" asp-route-id="@iteam.PkTransporte "><i class="fa-solid fa-pen-nib"></i>Editar </a>
+                                                    <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@iteam.PkTransporte"><i class="fa-solid fa-poo"></i>Eliminar </a>
                                             </td>
                                        </tr>
                                     }

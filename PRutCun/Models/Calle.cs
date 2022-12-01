@@ -8,6 +8,6 @@ namespace PRutCun.Models
         [Key]
         public int PkCalle { get; set; }
 
-        public string Nombre { get; set; }
+        public string NombreCalle { get; set; }
     }
 }

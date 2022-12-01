@@ -7,6 +7,5 @@ namespace PRutCun.Models
         [Key]
         public int PkPunto { get; set; }
         public string Nombre { get; set; }
-        public string Coordenadas { get; set; }
     }
 }

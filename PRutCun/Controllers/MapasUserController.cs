@@ -24,7 +24,7 @@ namespace PRutCun.Controllers
             _logger = logger;
             _context = context;
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-ABQMQPT; Initial Catalog=Rutcun; Integrated Security=True;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-SCRUN91; Initial Catalog=Rutcun; Integrated Security=True;");
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -42,7 +42,7 @@ namespace PRutCun.Controllers
         {
             try
             {
-                var response = await connection.QueryAsync<Mapas>("SpInsertMapas", new { i.MapaUrl,i.Fktrasportes}, commandType: CommandType.StoredProcedure); ;
+                var response = await connection.QueryAsync<Mapas>("SpInsertMapas", new { i.MapaUrl,i.Fktransportes}, commandType: CommandType.StoredProcedure); ;
                 return RedirectToAction(nameof(Index));
 
             }
@@ -71,7 +71,7 @@ namespace PRutCun.Controllers
             if (mapas != null)
             {
               
-                await connection.QueryAsync<Mapas>("SpUpdateMapas", new { request.PkMapas,request.MapaUrl,request.Fktrasportes}, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Mapas>("SpUpdateMapas", new { request.PkMapas,request.MapaUrl,request.Fktransportes}, commandType: CommandType.StoredProcedure);
 
                 return RedirectToAction(nameof(Index));
             }

@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PRutCun.Models
 {
-    public class Trasporte
+    public class Transporte
     {
         [Key]
-        public int PkTrasporte { get; set; }
+        public int PkTransporte { get; set; }
 
         public string Nombre { get; set; }
         public string HoraInicial { get; set;}
@@ -17,7 +17,7 @@ namespace PRutCun.Models
 
         [ForeignKey ("Tipo")]
         public int? FkTipo { get; set; }
-        public TipoTrasporte Tipo { get; set; }
+        public TipoTransporte Tipo { get; set; }
 
     }
 }

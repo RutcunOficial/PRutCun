@@ -1,6 +1,6 @@
-﻿@model PRutCun.Models.Trasporte
+﻿@model PRutCun.Models.Transporte
 @{
-    ViewData["Title"] = "Trasporte";
+    ViewData["Title"] = "Transporte";
     Layout = "_LayoutCrud";
 }
 
@@ -15,7 +15,7 @@
 
                 <form asp-action="TrasporteEditar" method="post">
                     @*                    Id Del usuario oculto*@
-                    <input type="hidden" asp-for="PkTrasporte" />
+                    <input type="hidden" asp-for="PkTransporte" />
                     <div class="form-group">
                         <label asp-for="Nombre">Ruta</label>
                         <input asp-for="Nombre" class="form-control" placeholder="ingresar nombre de la ruta" required>

@@ -24,12 +24,12 @@ namespace PRutCun.Controllers
             _logger = logger;
             _context = context;
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-ABQMQPT; Initial Catalog=Rutcun; Integrated Security=True;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-SCRUN91; Initial Catalog=Rutcun; Integrated Security=True;");
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             //var response = await _context.ArticuloDb.ToListAsync();
-            var response = await connection.QueryAsync<Trasporte>("SpGetTrasporte", new { }, commandType: CommandType.StoredProcedure);
+            var response = await connection.QueryAsync<Transporte>("SpGetTrasporte", new { }, commandType: CommandType.StoredProcedure);
             return View(response);
         }
         [HttpGet]
@@ -38,11 +38,11 @@ namespace PRutCun.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Crear(Trasporte i)
+        public async Task<IActionResult> Crear(Transporte i)
         {
             try
             {
-                var response = await connection.QueryAsync<Trasporte>("Sp_IngresarRuta", new { i.Nombre,i.HoraInicial,i.HoraFinal,i.Dia,i.Estatus,i.FkTipo }, commandType: CommandType.StoredProcedure); ;
+                var response = await connection.QueryAsync<Transporte>("Sp_IngresarRuta", new { i.Nombre,i.HoraInicial,i.HoraFinal,i.Dia,i.Estatus,i.FkTipo }, commandType: CommandType.StoredProcedure); ;
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -62,15 +62,15 @@ namespace PRutCun.Controllers
             return View(trasporte);
         }
         [HttpPost]
-        public async Task<ActionResult> TrasporteEditar(Trasporte request)
+        public async Task<ActionResult> TrasporteEditar(Transporte request)
         {
 
-            Trasporte trasporte = new Trasporte();
-            trasporte = _context.Trasporte.Find(request.PkTrasporte);
+            Transporte trasporte = new Transporte();
+            trasporte = _context.Trasporte.Find(request.PkTransporte);
             if (trasporte != null)
             {
 
-                await connection.QueryAsync<Trasporte>("Sp_UpdateRuta", new { request.PkTrasporte,request.Nombre,request.HoraInicial,request.HoraFinal,request.Dia,request.Estatus,request.FkTipo }, commandType: CommandType.StoredProcedure);
+                await connection.QueryAsync<Transporte>("SpUpdateRuta", new { request.PkTransporte,request.Nombre,request.HoraInicial,request.HoraFinal,request.Dia,request.Estatus,request.FkTipo }, commandType: CommandType.StoredProcedure);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -79,16 +79,16 @@ namespace PRutCun.Controllers
         [HttpGet]
         public IActionResult Eliminar(int id)
         {
-            Trasporte trasporte = new Trasporte();
-            trasporte.PkTrasporte = id;
+            Transporte trasporte = new Transporte();
+            trasporte.PkTransporte = id;
             return View(trasporte);
         }
         [HttpPost]
-        public async Task<IActionResult> Borrar(Trasporte i)
+        public async Task<IActionResult> Borrar(Transporte i)
         {
             try
             {
-                var response = await connection.QueryAsync<Trasporte>("Sp_DeleteRuta", new { i.PkTrasporte}, commandType: CommandType.StoredProcedure); ;
+                var response = await connection.QueryAsync<Transporte>("Sp_DeleteRuta", new { i.PkTransporte}, commandType: CommandType.StoredProcedure); ;
                 return RedirectToAction(nameof(Index));
 
             }

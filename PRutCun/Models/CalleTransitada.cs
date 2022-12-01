@@ -8,14 +8,14 @@ namespace PRutCun.Models
         [Key]
         public int FkCalle { get; set; }
         [Key]
-        public int FkTrasporte { get; set; }
+        public int FkTransporte { get; set; }
 
         [ForeignKey("FkCalle")]
 
         public Calle Calle { get; set; }
 
-        [ForeignKey("FkTrasporte")]
+        [ForeignKey("FkTransporte")]
 
-        public Trasporte Trasporte { get; set; }
+        public Transporte Transporte { get; set; }
     }
 }

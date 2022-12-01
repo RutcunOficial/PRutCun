@@ -26,7 +26,7 @@ namespace PRutCun.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("NombreCalle")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PkCalle");
@@ -39,12 +39,12 @@ namespace PRutCun.Migrations
                     b.Property<int>("FkCalle")
                         .HasColumnType("int");
 
-                    b.Property<int>("FkTrasporte")
+                    b.Property<int>("FkTransporte")
                         .HasColumnType("int");
 
-                    b.HasKey("FkCalle", "FkTrasporte");
+                    b.HasKey("FkCalle", "FkTransporte");
 
-                    b.HasIndex("FkTrasporte");
+                    b.HasIndex("FkTransporte");
 
                     b.ToTable("CalleTransitada");
                 });
@@ -56,7 +56,7 @@ namespace PRutCun.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Fktrasportes")
+                    b.Property<int?>("Fktransportes")
                         .HasColumnType("int");
 
                     b.Property<string>("MapaUrl")
@@ -64,7 +64,7 @@ namespace PRutCun.Migrations
 
                     b.HasKey("PkMapas");
 
-                    b.HasIndex("Fktrasportes");
+                    b.HasIndex("Fktransportes");
 
                     b.ToTable("Mapas");
                 });
@@ -75,9 +75,6 @@ namespace PRutCun.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Coordenadas")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -92,12 +89,12 @@ namespace PRutCun.Migrations
                     b.Property<int>("FkPunto")
                         .HasColumnType("int");
 
-                    b.Property<int>("FkTrasporte")
+                    b.Property<int>("FkTransporte")
                         .HasColumnType("int");
 
-                    b.HasKey("FkPunto", "FkTrasporte");
+                    b.HasKey("FkPunto", "FkTransporte");
 
-                    b.HasIndex("FkTrasporte");
+                    b.HasIndex("FkTransporte");
 
                     b.ToTable("PuntoTransitado");
                 });
@@ -117,7 +114,7 @@ namespace PRutCun.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("PRutCun.Models.TipoTrasporte", b =>
+            modelBuilder.Entity("PRutCun.Models.TipoTransporte", b =>
                 {
                     b.Property<int>("PkTipo")
                         .ValueGeneratedOnAdd()
@@ -132,9 +129,9 @@ namespace PRutCun.Migrations
                     b.ToTable("TipoTrasporte");
                 });
 
-            modelBuilder.Entity("PRutCun.Models.Trasporte", b =>
+            modelBuilder.Entity("PRutCun.Models.Transporte", b =>
                 {
-                    b.Property<int>("PkTrasporte")
+                    b.Property<int>("PkTransporte")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -157,7 +154,7 @@ namespace PRutCun.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PkTrasporte");
+                    b.HasKey("PkTransporte");
 
                     b.HasIndex("FkTipo");
 
@@ -201,24 +198,24 @@ namespace PRutCun.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PRutCun.Models.Trasporte", "Trasporte")
+                    b.HasOne("PRutCun.Models.Transporte", "Transporte")
                         .WithMany()
-                        .HasForeignKey("FkTrasporte")
+                        .HasForeignKey("FkTransporte")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Calle");
 
-                    b.Navigation("Trasporte");
+                    b.Navigation("Transporte");
                 });
 
             modelBuilder.Entity("PRutCun.Models.Mapas", b =>
                 {
-                    b.HasOne("PRutCun.Models.Trasporte", "Trasporte")
+                    b.HasOne("PRutCun.Models.Transporte", "Transporte")
                         .WithMany()
-                        .HasForeignKey("Fktrasportes");
+                        .HasForeignKey("Fktransportes");
 
-                    b.Navigation("Trasporte");
+                    b.Navigation("Transporte");
                 });
 
             modelBuilder.Entity("PRutCun.Models.PuntoTransitado", b =>
@@ -229,20 +226,20 @@ namespace PRutCun.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PRutCun.Models.Trasporte", "Trasporte")
+                    b.HasOne("PRutCun.Models.Transporte", "Transporte")
                         .WithMany()
-                        .HasForeignKey("FkTrasporte")
+                        .HasForeignKey("FkTransporte")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Punto");
 
-                    b.Navigation("Trasporte");
+                    b.Navigation("Transporte");
                 });
 
-            modelBuilder.Entity("PRutCun.Models.Trasporte", b =>
+            modelBuilder.Entity("PRutCun.Models.Transporte", b =>
                 {
-                    b.HasOne("PRutCun.Models.TipoTrasporte", "Tipo")
+                    b.HasOne("PRutCun.Models.TipoTransporte", "Tipo")
                         .WithMany()
                         .HasForeignKey("FkTipo");
 

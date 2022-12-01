@@ -24,16 +24,16 @@ namespace PRutCun.Controllers
             _logger = logger;
             _context = context;
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-ABQMQPT; Initial Catalog=Rutcun; Integrated Security=True;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-SCRUN91; Initial Catalog=Rutcun; Integrated Security=True;");
 
         [HttpPost]
         public async Task<ActionResult> Mapa(Mapas response)
         {
             Mapas mapas = new Mapas();
-            mapas = _context.Mapas.Find(response.Fktrasportes);
+            mapas = _context.Mapas.Find(response.Fktransportes);
             if (mapas != null)
             {
-                var mapas1 = await connection.QueryAsync<Mapas>("SpMapaGet", new { response.Fktrasportes }, commandType: CommandType.StoredProcedure);
+                var mapas1 = await connection.QueryAsync<Mapas>("SpMapaGet", new { response.Fktransportes }, commandType: CommandType.StoredProcedure);
                 //var mapas2 = await connection.QueryAsync<Mapas>("SpGetDatosT", new { response.Fktrasportes }, commandType: CommandType.StoredProcedure);
                 
                 return View(mapas1.FirstOrDefault());
@@ -41,20 +41,6 @@ namespace PRutCun.Controllers
             return NotFound();
 
         }
-        //[HttpPost]
-        //public async Task<ActionResult> Texto(Mapas response)
-        //{
-        //    Mapas mapas = new Mapas();
-        //    mapas = _context.Mapas.Find(response.Fktrasportes);
-        //    if (mapas != null)
-        //    {
-        //        var a = await connection.QueryAsync<Mapas>("SpGetDatosT", new { response.Fktrasportes }, commandType: CommandType.StoredProcedure);
-
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return NotFound();
-
-        //}
 
         [HttpGet]
 
@@ -63,7 +49,7 @@ namespace PRutCun.Controllers
             ViewBag.Transporte = _context.Trasporte.Select(p => new SelectListItem()
             {
                 Text = p.Nombre,
-                Value = p.PkTrasporte.ToString()
+                Value = p.PkTransporte.ToString()
 
 
             });

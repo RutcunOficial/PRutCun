@@ -2,7 +2,7 @@
 
 namespace PRutCun.Migrations
 {
-    public partial class prueba : Migration
+    public partial class Rutcun : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace PRutCun.Migrations
                 {
                     PkCalle = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    NombreCalle = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,8 +25,7 @@ namespace PRutCun.Migrations
                 {
                     PkPunto = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Coordenadas = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,7 +85,7 @@ namespace PRutCun.Migrations
                 name: "Trasporte",
                 columns: table => new
                 {
-                    PkTrasporte = table.Column<int>(type: "int", nullable: false)
+                    PkTransporte = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HoraInicial = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -97,7 +96,7 @@ namespace PRutCun.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trasporte", x => x.PkTrasporte);
+                    table.PrimaryKey("PK_Trasporte", x => x.PkTransporte);
                     table.ForeignKey(
                         name: "FK_Trasporte_TipoTrasporte_FkTipo",
                         column: x => x.FkTipo,
@@ -111,11 +110,11 @@ namespace PRutCun.Migrations
                 columns: table => new
                 {
                     FkCalle = table.Column<int>(type: "int", nullable: false),
-                    FkTrasporte = table.Column<int>(type: "int", nullable: false)
+                    FkTransporte = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CalleTransitada", x => new { x.FkCalle, x.FkTrasporte });
+                    table.PrimaryKey("PK_CalleTransitada", x => new { x.FkCalle, x.FkTransporte });
                     table.ForeignKey(
                         name: "FK_CalleTransitada_Calle_FkCalle",
                         column: x => x.FkCalle,
@@ -123,10 +122,10 @@ namespace PRutCun.Migrations
                         principalColumn: "PkCalle",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CalleTransitada_Trasporte_FkTrasporte",
-                        column: x => x.FkTrasporte,
+                        name: "FK_CalleTransitada_Trasporte_FkTransporte",
+                        column: x => x.FkTransporte,
                         principalTable: "Trasporte",
-                        principalColumn: "PkTrasporte",
+                        principalColumn: "PkTransporte",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -137,16 +136,16 @@ namespace PRutCun.Migrations
                     PkMapas = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MapaUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Fktrasportes = table.Column<int>(type: "int", nullable: true)
+                    Fktransportes = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Mapas", x => x.PkMapas);
                     table.ForeignKey(
-                        name: "FK_Mapas_Trasporte_Fktrasportes",
-                        column: x => x.Fktrasportes,
+                        name: "FK_Mapas_Trasporte_Fktransportes",
+                        column: x => x.Fktransportes,
                         principalTable: "Trasporte",
-                        principalColumn: "PkTrasporte",
+                        principalColumn: "PkTransporte",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -155,11 +154,11 @@ namespace PRutCun.Migrations
                 columns: table => new
                 {
                     FkPunto = table.Column<int>(type: "int", nullable: false),
-                    FkTrasporte = table.Column<int>(type: "int", nullable: false)
+                    FkTransporte = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PuntoTransitado", x => new { x.FkPunto, x.FkTrasporte });
+                    table.PrimaryKey("PK_PuntoTransitado", x => new { x.FkPunto, x.FkTransporte });
                     table.ForeignKey(
                         name: "FK_PuntoTransitado_PuntoInteres_FkPunto",
                         column: x => x.FkPunto,
@@ -167,27 +166,27 @@ namespace PRutCun.Migrations
                         principalColumn: "PkPunto",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PuntoTransitado_Trasporte_FkTrasporte",
-                        column: x => x.FkTrasporte,
+                        name: "FK_PuntoTransitado_Trasporte_FkTransporte",
+                        column: x => x.FkTransporte,
                         principalTable: "Trasporte",
-                        principalColumn: "PkTrasporte",
+                        principalColumn: "PkTransporte",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CalleTransitada_FkTrasporte",
+                name: "IX_CalleTransitada_FkTransporte",
                 table: "CalleTransitada",
-                column: "FkTrasporte");
+                column: "FkTransporte");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mapas_Fktrasportes",
+                name: "IX_Mapas_Fktransportes",
                 table: "Mapas",
-                column: "Fktrasportes");
+                column: "Fktransportes");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PuntoTransitado_FkTrasporte",
+                name: "IX_PuntoTransitado_FkTransporte",
                 table: "PuntoTransitado",
-                column: "FkTrasporte");
+                column: "FkTransporte");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trasporte_FkTipo",

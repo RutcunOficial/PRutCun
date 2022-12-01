@@ -10,13 +10,13 @@ namespace PRutCun.Models
         [Key]
         public int FkPunto { get; set; }
         [Key]
-        public int FkTrasporte { get; set; }
+        public int FkTransporte { get; set; }
 
         [ForeignKey("FkPunto")]
         public PuntoInteres Punto { get; set; }
 
-        [ForeignKey("FkTrasporte")]
-        public Trasporte Trasporte { get; set; }
+        [ForeignKey("FkTransporte")]
+        public Transporte Transporte { get; set; }
 
     }
 }

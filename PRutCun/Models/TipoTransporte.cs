@@ -2,7 +2,7 @@
 
 namespace PRutCun.Models
 {
-    public class TipoTrasporte
+    public class TipoTransporte
     {
         [Key]
         public int PkTipo { get; set; }

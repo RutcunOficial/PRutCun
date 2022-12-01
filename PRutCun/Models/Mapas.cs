@@ -10,9 +10,9 @@ namespace PRutCun.Models
         public int PkMapas { get; set; }
         public string MapaUrl { get; set; }
 
-        [ForeignKey("Trasporte")]
-        public int? Fktrasportes { get; set; }
-        public Trasporte Trasporte { get; set; }
+        [ForeignKey("Transporte")]
+        public int? Fktransportes { get; set; }
+        public Transporte Transporte { get; set; }
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model PRutCun.Models.Trasporte
+﻿@model PRutCun.Models.Transporte
 @{
     ViewData["Title"] = "borrar trasporte";
     Layout = "_LayoutCrud";
@@ -17,7 +17,7 @@
 
                 <form asp-action="Borrar" method="post">
                     @*                    @id del usuario oculto@
-*@                    <input type="hidden" asp-for="PkTrasporte" />
+*@                    <input type="hidden" asp-for="PkTransporte" />
                     <h1><strong>Desea Borrar el transporte?</strong></h1>
                     <div class="container-fluid">
                         <a class="btn btn-danger" asp-controller="Trasporte" asp-action="Index">NO</a>
