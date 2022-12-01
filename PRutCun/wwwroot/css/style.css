@@ -98,7 +98,6 @@ nav a {
     position: relative;
     height: auto;
     background-color: #000;
-   
 }
 
     .footer .col {
@@ -212,17 +211,19 @@ nav a {
 
 .mapa {
     z-index: 2022;
-    float: right;
-    margin-right: 6%;
+    float: none;
+    margin-left: 25%;
+    margin-right: 25%;
     width: 50%;
-    margin-top: 77px;
+    margin-top: 2%;
     height: 600px;
     border-radius: 10px;
     border: 3px solid #2E3139;
 }
 
 .Combo1 {
-    margin-left: 6.7%;
+    margin-left: 20%;
+    margin-top: 73px;
     height: 45px;
     width: 9%;
     border-radius: 12px;
@@ -250,6 +251,7 @@ nav a {
 .TextSel {
     color: black;
     margin-left: 100px;
+    margin-top: 5%;
     font-weight: bold;
     font-size: x-large;
     position: absolute;
@@ -258,7 +260,8 @@ nav a {
 
 .TextePun {
     color: black;
-    margin-left: 260px;
+    margin-left: 22%;
+    margin-top: -48%;
     font-weight: bold;
     font-size: x-large;
 }
@@ -284,7 +287,8 @@ nav a {
 }
 
 .contenedor {
-    width: 100%;
+    width: 75%;
+    margin: 0 auto;
     max-width: 2000px;
 }
 
@@ -327,11 +331,11 @@ nav a {
 
 .TextMap {
     color: black;
-    margin-left: 60%;
+    margin-left: 42%;
     font-weight: bold;
     font-size: x-large;
 }
 
-logo{
+logo {
     filter: invert(100%)
 }
