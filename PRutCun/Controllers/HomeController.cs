@@ -24,7 +24,7 @@ namespace PRutCun.Controllers
             _logger = logger;
             _context = context;
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-UDRF3CJ; Initial Catalog=Rutcun; Integrated Security=True;");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-SCRUN91; Initial Catalog=Rutcun; Integrated Security=True;");
 
         [HttpPost]
         public async Task<ActionResult> Mapa(Mapas response)
