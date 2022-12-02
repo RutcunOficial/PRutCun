@@ -27,7 +27,7 @@ h1 {
 }
 
 form {
-    background: rgb(138, 138, 138);
+    background: rgb(80, 238, 12);
     width: 30%;
     margin: 0 auto;
     padding: 10px 0;
@@ -146,10 +146,6 @@ button {
     }
 }
 
-@font-face {
-    font-family: 'Nexa';
-    src: url('font-nexa/Nexa-Trial-Thin.ttf');
-}
 
 .apartados {
     margin: 2% 1%;
@@ -176,6 +172,7 @@ nav {
 
     nav .logo {
         padding: 10px 0px 10px 20px;
+        width: 11%;
     }
 
     nav a {

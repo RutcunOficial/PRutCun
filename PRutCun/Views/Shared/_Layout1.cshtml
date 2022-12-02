@@ -1,39 +1,40 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PRutCun</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    @*<link rel="stylesheet" href="~/css/site.css" />*@
-    <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/Inicio.css" />
-    <link rel="stylesheet" href="~/css/Ayuda.css" />
+    <link rel="stylesheet" href="~/css/Estilo.css" />
     <crossorigin ="anonymous">
         <script src="https://kit.fontawesome.com/aff71718e3.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-   <header>
-    <div class="contenedor__nav">
-        <nav>
-            <img src="~/imagenes/pngegg.jpeg" class="logo">
-            <a class="apartados" asp-controller="Inicio" asp-action="Index">
-                <i class="fa-sharp fa-solid fa-bus-simple"></i> INICIO
-            </a>
-            <a class="apartados" asp-action="Index" asp-controller="Contac">
-                <i class="fa-sharp fa-solid fa-users"></i> Contactanos
-            </a>
-            <a class="apartados" href="ayuda.html">
-                <i class="fa-sharp fa-solid fa-lightbulb"></i> Ayuda</a>
-        </nav>
-    </div>
-</header>
+    <header>
+        <div class="contenedor__nav">
+            <nav>
+                <img src="~/imagenes/pngegg.jpeg" class="logo">
+                <a class="apartados" asp-controller="Inicio" asp-action="Index">
+                    <i class="fa-sharp fa-solid fa-bus-simple"></i> INICIO
+                </a>
+                <a class="apartados" asp-action="Index" asp-controller="Contac">
+                    <i class="fa-sharp fa-solid fa-users"></i> Contactanos
+                </a>
+                <a class="apartados" href="ayuda.html">
+                    <i class="fa-sharp fa-solid fa-lightbulb"></i> Ayuda
+                </a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <a asp-controller="Home" asp-action="Index">><button><input type="submit" value="Volver"></button></a>
     </div>
 
     <footer class="border-top footer text-muted">
@@ -98,7 +99,7 @@
                             </a>
                         </li>
                     </ul>
-                    <a asp-action="Index" asp-controller="Login"><button class="button">Admin Login</button></a>
+                    <a asp-action="Index" asp-controller="Login"><button>Admin Login</button></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -109,4 +110,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+</html>
+
 </html>

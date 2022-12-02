@@ -8,13 +8,12 @@
     <p class="TextMap"> Mapa con Ruta</p>
     <div>
         <div class="contenerdor__combos">
-            <p class="TextSel"> Rutas</p>
             <form asp-action="Mapa" method="post">
                 <select class="Combo1" asp-for="Fktransportes" asp-items="ViewBag.Transporte">
 
                     <option value=""></option>
                 </select>
-                <button id="btnEnviar" class="btn btn-outline-dark" type="submit">Enviar</button>
+                <button id="btnEnviar" class="button1" type="submit">Enviar</button>
             </form>
 
         </div>
