@@ -9,6 +9,7 @@
 ::after {
     margin: 0;
     padding: 0;
+    color: white;
     box-sizing: border-box;
 }
 
@@ -27,7 +28,7 @@ h1 {
 }
 
 form {
-    background: rgb(154 161 151);
+    background: black;
     width: 30%;
     margin: 0 auto;
     padding: 10px 0;
@@ -59,7 +60,7 @@ input, textarea {
 
     input:focus, textarea:focus {
         outline: none;
-        color: #000000;
+        color: #fff;
     }
 
         input:focus ~ label,
