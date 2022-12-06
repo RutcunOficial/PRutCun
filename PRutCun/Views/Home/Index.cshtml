@@ -7,13 +7,13 @@
 <div class="contenedor">
     <p class="TextMap"> Mapa con Ruta</p>
     <div>
-        <div class="contenerdor__combos">
+        <div class="form-floating">
             <form asp-action="Mapa" method="post">
-                <select class="Combo1" asp-for="Fktransportes" asp-items="ViewBag.Transporte">
+                <select class="select2-placeholder-multiple form-control" asp-for="Fktransportes" asp-items="ViewBag.Transporte" style=" width:127px; height:44px; margin-left:47%; ">
 
-                    <option value=""></option>
+                    <option value="">Selecciona</option>
                 </select>
-                <button id="btnEnviar" class="btn btn-dark" type="submit"><i class="fa-solid fa-map-location-dot"></i> Enviar</button>
+                <button id="btnEnviar" class="btn btn-success" type="submit"><i class="fa-solid fa-map-location-dot"></i> Enviar</button>
             </form>
 
         </div>
